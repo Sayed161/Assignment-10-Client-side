@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Featured from './Featured'
 import Action from './Action'
 import Upcoming from './Upcoming'
@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner'
 
 const Hero = () => {
   const sliders = [
@@ -32,6 +33,16 @@ const Hero = () => {
     }
   ];
  const data = useLoaderData();
+ const [loading,setLoading]=useState(true);
+   useEffect(()=>{
+     const timer = setTimeout(() => {
+       setLoading(false);
+     }
+     , 2000);
+     return ()=>clearTimeout(timer);
+ 
+   },[])
+
   return (
     <div className='bg-white dark:bg-black text-black dark:text-white'>
       <Swiper pagination={true} modules={[Pagination]} className="relative mySwiper h-screen w-full">

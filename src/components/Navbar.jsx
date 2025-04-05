@@ -35,7 +35,7 @@ const Navbar = () => {
   const links = (
     <>
     <span className="text-xl px-3">
-      {`${localStorage.getItem("theme")}`}
+     Theme
       <input
         type="checkbox"
         defaultChecked

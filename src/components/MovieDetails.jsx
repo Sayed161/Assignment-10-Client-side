@@ -2,14 +2,24 @@ import React, { useContext, useState } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { toast } from "react-toastify";
-
+import { RotatingLines } from 'react-loader-spinner'
 const MovieDetails = () => {
   const movie = useLoaderData();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
   if (!user || !movie) {
-    return <div>Loading...</div>;
+    return <div>  render(<RotatingLines
+      visible={true}
+      height="96"
+      width="96"
+      color="grey"
+      strokeWidth="5"
+      animationDuration="0.75"
+      ariaLabel="rotating-lines-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      />)</div>;
   }
   const { _id, poster, title, genre, duration, release, rating, summary } =
     movie;
