@@ -1,23 +1,63 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
-  const { user ,Logout} = useContext(AuthContext);
+  const { user, Logout } = useContext(AuthContext);
+  const location = useLocation();
+  console.log("lcation", location.pathname);
+  const style = location.pathname === "/" ? "text-white" : "text-black";
   console.log("user", user);
+  const handleDarkMode = ()=>{
+
+    const html = document.documentElement;
+    const newTheme = html.getAttribute("data-theme") === "dark"?"light":"dark";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+  const [dark,setDark]=useState(localStorage.getItem("theme")=="dark");
+
+  useEffect(()=>{
+    const savedtheme = localStorage.getItem("theme")||"dark";
+    document.documentElement.setAttribute("data-theme", savedtheme);
+    setDark(savedtheme==="dark");
+  },[])
+  useEffect(()=>{
+    const styleText= dark?"text-white":"text-red-700";
+    const navbar = document.querySelector(".navbar");
+    if(navbar){
+      navbar.classList.remove("text-white","text-red-700");
+      navbar.classList.add(styleText);
+    }
+  },[dark])
+  
+ const basepath = location.pathname.startsWith('')?"details/":"";
   const links = (
     <>
+    <span className="text-xl px-3">
+      {`${localStorage.getItem("theme")}`}
+      <input
+        type="checkbox"
+        defaultChecked
+        onChange={handleDarkMode}
+        className="toggle toggle-xl border-gray-600 bg-gray-600 checked:bg-black checked:text-white checked:border-black mx-6"
+      />
+    </span>
+      
       <Link to="/" className="text-xl px-3">
-        Movies
+        Home
       </Link>
-      <Link to="/add-movie" className="text-xl px-3">
+      <Link to={`/${basepath}all-movies`} className="text-xl px-3">
+        All Movies
+      </Link>
+      <Link to={`/${basepath}add-movie`} className="text-xl px-3">
         Add Movies
       </Link>
-      <Link to="/favourites" className="text-xl px-3">
+      <Link to={`/${basepath}favourites`} className="text-xl px-3">
         Favourites
       </Link>
-      <Link to="/update" className="text-xl  px-3">
-        Update Movies
+      <Link to={`/${basepath}shows`} className="text-xl  px-3">
+        TV SHOWS
       </Link>
     </>
   );
@@ -32,7 +72,9 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-transparent px-14 lg:px-8 py-6 absolute top-0 left-0 z-10 text-[#ffff]">
+    <div
+      className={`navbar bg-transparent px-14 lg:px-8 py-6 absolute top-0 left-0 z-10 ${style}`}
+    >
       <div className="navbar-start">
         <a className="btn btn-ghost text-5xl">MOVIEFLEX</a>
       </div>
@@ -42,24 +84,27 @@ const Navbar = () => {
           <ul className="hidden md:flex menu menu-horizontal px-4 text-xl items-center">
             {links}
             {user ? (
-             <div className="dropdown">
-             <Link
-               tabIndex={0}
-               role="button"
-               className="text-xl btn bg-[#DC2626] text-white border-none"
-             >
-               {user?.displayName}
-             </Link>
+              <div className="dropdown">
+                <Link
+                  tabIndex={0}
+                  role="button"
+                  className="text-xl btn bg-[#DC2626] text-white border-none"
+                >
+                  {user?.displayName}
+                </Link>
 
-             <ul
-               tabIndex={0}
-               className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow left-[-60px] text-2xl"
-             >
-               <button onClick={Logout} className="btn btn-neutral rounded-none">
-        Logout
-      </button>
-             </ul>
-           </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow left-[-60px] text-2xl"
+                >
+                  <button
+                    onClick={Logout}
+                    className="btn btn-neutral rounded-none"
+                  >
+                    Logout
+                  </button>
+                </ul>
+              </div>
             ) : (
               <div className="dropdown">
                 <Link
@@ -78,7 +123,6 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-          
           </ul>
           <div className="dropdown lg:hidden top-0 left-0 z-10">
             <div
@@ -104,19 +148,16 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-44 p-2 shadow left-[-60px]"
+              className={`menu menu-sm dropdown-content bg-transparent rounded-box z-1 mt-3 w-44 p-2 shadow left-[-60px] ${style}`}
             >
               {links}
-              {
-                user?(
-                  <Link onClick={Logout} className="text-xl px-3">
+              {user ? (
+                <Link onClick={Logout} className="text-xl px-3">
                   Logout
                 </Link>
-                ):(
-                  authLinks
-                )
-              }
-              
+              ) : (
+                authLinks
+              )}
             </ul>
           </div>
         </div>
