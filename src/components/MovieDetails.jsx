@@ -18,7 +18,7 @@ const MovieDetails = () => {
   };
   const [showfull,setShowfull]=useState(false);
   const handleFavourite = ()=>{
-    fetch("http://localhost:5000/favourites/")
+    fetch("https://movieflixserverside.vercel.app/favourites/")
     .then(res=>res.json())
     .then(favs=>{
       console.log("Favs's",favs);
@@ -29,7 +29,7 @@ const MovieDetails = () => {
         alert("This movie is already in your favorite")
         return
       }
-      fetch("http://localhost:5000/favourites/",
+      fetch("https://movieflixserverside.vercel.app/favourites/",
         {
           method: 'POST',
           headers: {
@@ -44,7 +44,7 @@ const MovieDetails = () => {
     
   };
   const handleDelete = ()=>{
-    fetch(`http://localhost:5000/movies/${_id}`, {
+    fetch(`https://movieflixserverside.vercel.app/movies/${_id}`, {
       
       method: 'DELETE',
       headers: {

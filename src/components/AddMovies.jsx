@@ -19,7 +19,7 @@ const AddMovies = () => {
     const summary = formData.get('summary');
     const data = { poster, title, genre, duration, release, rating, summary };
     console.log("denger",genre);
-    fetch("http://localhost:5000/movies",{
+    fetch("https://movieflixserverside.vercel.app/movies",{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

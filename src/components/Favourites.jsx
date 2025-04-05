@@ -37,7 +37,7 @@ const Favourites = () => {
     console.log("id",id);
     const details = fav.filter(item=>item?.movie?._id === id);
     console.log("details",details);
-    fetch(`http://localhost:5000/favourites/${id}`,
+    fetch(`https://movieflixserverside.vercel.app/favourites/${id}`,
       {
         method: 'DELETE',
         headers: {

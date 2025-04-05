@@ -20,7 +20,7 @@ const Routes = createBrowserRouter([
       {
         path:"/",
         element:<Hero></Hero>,
-        loader: () => fetch("http://localhost:5000/movies"),
+        loader: () => fetch("https://movieflixserverside.vercel.app/movies"),
       }
     ]
   },{
@@ -48,24 +48,24 @@ const Routes = createBrowserRouter([
       {
         path: "favourites",
         element: <Favourites/>,
-        loader: () => fetch("http://localhost:5000/favourites"),
+        loader: () => fetch("https://movieflixserverside.vercel.app/favourites"),
 
       },
       {
         path: "all-movies",
         element: <AllMovies/>,
-        loader: () => fetch("http://localhost:5000/movies"),
+        loader: () => fetch("https://movieflixserverside.vercel.app/movies"),
 
       },
       {
         path: "update-movie/:id",
         element: <UpdateMovies></UpdateMovies>,
-        loader: ({params}) => fetch(`http://localhost:5000/movies/${params.id}`)
+        loader: ({params}) => fetch(`https://movieflixserverside.vercel.app/movies/${params.id}`)
       },
       {
         path: "movie/:id",
         element: <MovieDetails/>,
-        loader: ({params}) => fetch(`http://localhost:5000/movies/${params.id}`),
+        loader: ({params}) => fetch(`https://movieflixserverside.vercel.app/movies/${params.id}`),
       },
     ]
   },

@@ -19,7 +19,7 @@ const UpdateMovies = () => {
     });
   const handleMovie = (data) => {
 
-    fetch(`http://localhost:5000/movies/${movie._id}`,{
+    fetch(`https://movieflixserverside.vercel.app/movies/${movie._id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
