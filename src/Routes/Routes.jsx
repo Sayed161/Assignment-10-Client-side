@@ -12,6 +12,7 @@ import MovieDetails from "../components/MovieDetails";
 import Favourites from "../components/Favourites";
 import AllMovies from "../components/AllMovies";
 import DetailsLayout from "../Layouts/DetailsLayout";
+import AuthLayout from "../Layouts/AuthLayout";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -24,12 +25,18 @@ const Routes = createBrowserRouter([
       }
     ]
   },{
-    path: "/login",
-    element: <SignIn />,
-  },
-  {
-    path: "/register",
-    element: <SignUp />,
+    path: "/",
+    element: <AuthLayout/>,
+    children:[
+      {
+        path: "login",
+        element: <SignIn/>,
+      },
+      {
+        path: "register",
+        element: <SignUp/>,
+      },
+    ]
   },
   {
     path:"/details",
@@ -37,7 +44,7 @@ const Routes = createBrowserRouter([
     children:[
       {
         path: "add-movie",
-        element: <AddMovies></AddMovies>
+        element: <PrivateRouter><AddMovies></AddMovies></PrivateRouter>
       },
       {
         path: "shows",
@@ -47,7 +54,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "favourites",
-        element: <Favourites/>,
+        element: <PrivateRouter><Favourites/></PrivateRouter>,
         loader: () => fetch("https://movieflixserverside.vercel.app/favourites"),
 
       },
@@ -59,12 +66,12 @@ const Routes = createBrowserRouter([
       },
       {
         path: "update-movie/:id",
-        element: <UpdateMovies></UpdateMovies>,
+        element: <PrivateRouter> <UpdateMovies></UpdateMovies></PrivateRouter>,
         loader: ({params}) => fetch(`https://movieflixserverside.vercel.app/movies/${params.id}`)
       },
       {
         path: "movie/:id",
-        element: <MovieDetails/>,
+        element: <PrivateRouter> <MovieDetails/></PrivateRouter>,
         loader: ({params}) => fetch(`https://movieflixserverside.vercel.app/movies/${params.id}`),
       },
     ]

@@ -51,27 +51,23 @@ const SignUp = () => {
   return (
     <div>
         <ToastContainer position="top-center"/>
-      <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero bg-[rgba(0,0,0,0.1)] text-white min-h-screen mt-20 lg:mt-60">
+  <div className="hero-content flex-col">
     <div className="text-center lg:text-left">
       <h1 className="text-7xl font-bold">Register now!</h1>
-      <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
     </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
+    <div className="card bg-[rgba(256,254,277,0.9)]  w-full lg:w-[600px] shrink-0 shadow-2xl z-10">
+      <div className="card-body text-gray-600">
         <form action="" onSubmit={handleRegister}>
-        <fieldset className="fieldset text-lg">
+        <fieldset className="fieldset text-lg ">
           <label className="fieldset-label">Name</label>
-          <input type="text" className="input" placeholder="Name" name="name"/>
+          <input type="text" className="input w-full" placeholder="Name" name="name"/>
           <label className="fieldset-label">Email</label>
-          <input type="email" className="input" placeholder="Email" name="email"/>
+          <input type="email" className="input  w-full" placeholder="Email" name="email"/>
           <label className="fieldset-label">Photo URL</label>
-          <input type="text" className="input" placeholder="Photo" name="photo"/>
+          <input type="text" className="input  w-full" placeholder="Photo" name="photo"/>
           <label className="fieldset-label">Password</label>
-          <input type="password" className="input" placeholder="Password" name="password"/>
+          <input type="password" className="input  w-full" placeholder="Password" name="password"/>
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4 text-xl">Register</button>
           <Link to="/login" className="link link-hover text-blue-600">Already have an account? Login</Link>

@@ -43,7 +43,7 @@ const Hero = () => {
                 <h1 className='text-5xl font-bold'>{slider.title}</h1>
                 
                 <p className='text-xl mt-4'>{slider.description}</p>
-                <Link tabIndex={0}
+                <Link to={"/details/all-movies/"} tabIndex={0}
                 role="button" className="text-xl btn bg-[#DC2626] text-white border-none px-16 mt-4">Watch Movie</Link>
               </div>
              
