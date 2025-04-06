@@ -85,8 +85,8 @@ Movieflix is a full-stack movie catalog application where users can browse, add,
 ### Backend (Server)
 
 ```bash
-git clone (https://github.com/Sayed161/Assignment-10-Client-side.git)
-cd movieflix-server
+git clone https://github.com/Sayed161/Assignment-10-Client-side.git
+cd Assignment-10-Client-side
 npm install
 create .env file with DB and PORT
 npm start
