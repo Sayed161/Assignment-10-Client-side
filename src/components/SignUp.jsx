@@ -29,7 +29,7 @@ const SignUp = () => {
                 const user = result.user;
                  setUser(user);
               toast.success("You have Registered!");
-              fetch('http://localhost:5000/users', {
+              fetch('https://movieflixserverside.vercel.app/users', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
