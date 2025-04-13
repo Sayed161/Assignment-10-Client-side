@@ -1,12 +1,92 @@
-# React + Vite
+# 🎬 Movieflix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movieflix is a full-stack movie catalog application where users can browse, add, and favorite movies. It supports user authentication (including Google Login), private/public routes, form validation, CRUD operations, and responsive UI with dark/light mode toggle. Built using the MERN stack.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Website
+🔗 [Visit Movieflix Live](https://movieflix-f2433.web.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Repositories
+
+- **Client Side:** [Movieflix Frontend Repo](https://github.com/Sayed161/Assignment-10-Client-side)
+- **Server Side:** [Movieflix Backend Repo](https://github.com/Sayed161/Assignment-10_server_side)
+
+---
+
+## 🔧 Tech Stack
+
+### Frontend:
+- React.js
+- React Router DOM
+- Firebase Authentication
+- Tailwind CSS + DaisyUI
+- React Hook Form
+- React Simple Star Rating
+- Toastify
+
+### Backend:
+- Node.js
+- Express.js
+- MongoDB (Atlas)
+- CORS
+- dotenv
+
+---
+
+## ✨ Features
+
+- 🔐 **Authentication**
+  - Email/password login & registration
+  - Google social login
+  - Protected routes (Add Movie, Favorites, Details, Update)
+
+- 🎥 **Movie Management**
+  - Add, Update, Delete Movies (with validation)
+  - View all movies
+  - Favorite and Unfavorite movies
+  - Individual Movie Details
+
+- 🔍 **Extras**
+  - Search movies by title
+  - Loading Spinner
+  - 404 Page
+  - Toast & SweetAlerts for CRUD operations
+  - Responsive Design with Dark/Light Mode
+
+---
+
+## 🗂️ Pages & Routes
+
+| Route                | Description                               | Access     |
+|---------------------|-------------------------------------------|------------|
+| `/`                 | Home page (Slider, Featured, Extra)       | Public     |
+| `/login`            | Login Page                                | Public     |
+| `/register`         | Register Page                             | Public     |
+| `/all-movies`       | All Movies Listing                        | Public     |
+| `/add-movie`        | Add a New Movie                           | Private    |
+| `/favorites`        | User's Favorite Movies                    | Private    |
+| `/movie/:id`        | Movie Details                             | Private    |
+| `/update/:id`       | Update Movie Form                         | Private    |
+| `/shows`            | TV SHOW                                   | Public     |
+| `*`                 | 404 Page                                  | Public     |
+
+---
+
+## 🛠️ Installation & Setup
+
+### Prerequisites:
+- Node.js
+- MongoDB Atlas
+- Firebase project for authentication
+
+### Backend (Server)
+
+```bash
+git clone https://github.com/Sayed161/Assignment-10-Client-side.git
+cd Assignment-10-Client-side
+npm install
+create .env file with DB and PORT
+npm start
